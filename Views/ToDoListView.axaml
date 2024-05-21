@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
+             x:Class="AvaloniaUITodoListApp.Views.ToDoListView">
+
+	<DockPanel Margin="15">
+		<Button DockPanel.Dock="Bottom"
+				HorizontalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				Padding="10"
+				FontWeight="Bold"
+				Cursor="Hand">
+			Add New Task
+		</Button>
+		<StackPanel>
+			<CheckBox
+				Cursor="Hand"
+				Margin="4">
+				Update the project documentation
+			</CheckBox>
+			<CheckBox
+				Cursor="Hand"
+				Margin="4">
+				Implement the login feature
+			</CheckBox>
+			<CheckBox
+				Cursor="Hand"
+				Margin="4">
+				Fix bugs reported in issue tracker
+			</CheckBox>
+			<CheckBox
+				Cursor="Hand"
+				Margin="4">
+				Review pull requests
+			</CheckBox>
+		</StackPanel>
+	</DockPanel>
+</UserControl>

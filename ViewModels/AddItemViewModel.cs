@@ -1,5 +1,6 @@
 using AvaloniaUITodoListApp.Models;
 using ReactiveUI;
+using System;
 using System.Reactive;
 
 namespace AvaloniaUITodoListApp.ViewModels
@@ -17,7 +18,9 @@ namespace AvaloniaUITodoListApp.ViewModels
                 x => x.Description,
                 x => !string.IsNullOrWhiteSpace(x));
 
-            AddCommand = ReactiveCommand.Create(() => new ToDoItem { Description = Description }, isValidObservable);
+            Random random = new Random();
+
+            AddCommand = ReactiveCommand.Create(() => new ToDoItem { Id = random.Next(), Description = Description }, isValidObservable);
             CancelCommand = ReactiveCommand.Create(() => { });
         }
 

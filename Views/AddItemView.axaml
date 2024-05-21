@@ -21,7 +21,6 @@
 				Padding="10"
 				Margin="0,0,5,0"
 				Cursor="Hand"
-				x:CompileBindings="false"
 				Command="{Binding CancelCommand}">
 				Cancel
 			</Button>

@@ -4,7 +4,8 @@ namespace AvaloniaUITodoListApp.Models
 {
     public class ToDoItem
     {
-        public string Description { get; set; } = String.Empty;
+        public required int Id { get; set; }
+        public required string Description { get; set; } = String.Empty;
         public bool IsChecked { get; set; }
     }
 }

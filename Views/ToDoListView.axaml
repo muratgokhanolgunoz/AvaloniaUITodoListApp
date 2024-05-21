@@ -21,11 +21,26 @@
 		<ItemsControl ItemsSource="{Binding ToDoList}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<CheckBox
-						Margin="4"
-						IsChecked="{Binding IsChecked}"
-						Content="{Binding Description}"
-						Cursor="Hand"/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="65" />
+						</Grid.ColumnDefinitions>
+						<CheckBox
+							Margin="4"
+							IsChecked="{Binding IsChecked}"
+							Content="{Binding Description}"
+							Cursor="Hand"
+							Grid.Column="0"/>
+						<Button
+							Grid.Column="1"
+							FontWeight="Bold"
+							Foreground="White"
+							Background="Red"
+							Cursor="Hand">
+							Delete
+						</Button>
+					</Grid>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>

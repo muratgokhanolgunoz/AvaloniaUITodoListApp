@@ -9,18 +9,22 @@ namespace AvaloniaUITodoListApp.Services
         {
             new ToDoItem
             {
+                Id = 1,
                 Description = "Update the project documentation"
             },
             new ToDoItem
             {
+                Id = 2,
                 Description = "Implement the login feature"
             },
             new ToDoItem
             {
+                Id = 3,
                 Description = "Fix bugs reported in issue tracker"
             },
             new ToDoItem
             {
+                Id = 4,
                 Description = "Review pull requests",
                 IsChecked = true
             }

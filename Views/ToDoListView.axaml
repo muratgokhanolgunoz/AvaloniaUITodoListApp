@@ -13,7 +13,9 @@
 				HorizontalContentAlignment="Center"
 				Padding="10"
 				FontWeight="Bold"
-				Cursor="Hand">
+				Cursor="Hand"
+				x:CompileBindings="False"
+				Command="{Binding $parent[Window].DataContext.AddItem}">
 			Add New Task
 		</Button>
 		<ItemsControl ItemsSource="{Binding ToDoList}">

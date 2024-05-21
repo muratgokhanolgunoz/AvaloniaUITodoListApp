@@ -8,29 +8,35 @@
 			 x:DataType="vm:AddItemViewModel">
 
 	<DockPanel Margin="15">
-		<StackPanel
-			DockPanel.Dock="Bottom"
-			Orientation="Vertical"
-			Spacing="10">
+		<Grid DockPanel.Dock="Bottom">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
 			<Button
+				Grid.Column="0"
 				HorizontalAlignment="Stretch"
 				HorizontalContentAlignment="Center"
 				FontWeight="Bold"
 				Padding="10"
+				Margin="0,0,5,0"
 				Cursor="Hand"
-				x:CompileBindings="False"
-				Command="{Binding $parent[Window].DataContext.ToDoList}">
+				x:CompileBindings="false"
+				Command="{Binding CancelCommand}">
 				Cancel
 			</Button>
 			<Button
+				Grid.Column="1"
 				HorizontalAlignment="Stretch"
 				HorizontalContentAlignment="Center"
 				FontWeight="Bold"
 				Padding="10"
-				Cursor="Hand">
-				OK
+				Margin="5,0,0,0"
+				Cursor="Hand"
+				Command="{Binding AddCommand}">
+				Add
 			</Button>
-		</StackPanel>
+		</Grid>
 		<TextBox
 			AcceptsReturn="True"
 			Text="{Binding Description}"

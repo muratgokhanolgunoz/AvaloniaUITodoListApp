@@ -1,18 +1,23 @@
-﻿using AvaloniaUITodoListApp.Services;
+﻿using AvaloniaUITodoListApp.Models;
+using AvaloniaUITodoListApp.Services;
 using ReactiveUI;
+using System;
+using System.Reactive.Linq;
 
 namespace AvaloniaUITodoListApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
         private ViewModelBase _viewModelBase;
+        public ToDoListViewModel ToDoListViewModel { get; }
 
         public MainWindowViewModel()
         {
-            ToDoList();
-        }
+            var service = new ToDoListService();
+            ToDoListViewModel = new ToDoListViewModel(service.GetItems());
 
-        public ToDoListViewModel ToDoListViewModel { get; }
+            _viewModelBase = ToDoListViewModel;
+        }
 
         public ViewModelBase ViewModelBase
         {
@@ -22,13 +27,23 @@ namespace AvaloniaUITodoListApp.ViewModels
 
         public void AddItem()
         {
-            ViewModelBase = new AddItemViewModel();
-        }
+            AddItemViewModel addItemViewModel = new();
 
-        public void ToDoList()
-        {
-            var service = new ToDoListService();
-            ViewModelBase = new ToDoListViewModel(service.GetItems());
+            Observable.Merge(
+                addItemViewModel.AddCommand,
+                addItemViewModel.CancelCommand.Select(_ => (ToDoItem?)null))
+                .Take(1)
+                .Subscribe(newItem =>
+                {
+                    if(newItem != null)
+                    {
+                        ToDoListViewModel.ToDoList.Add(newItem);
+                    }
+
+                    ViewModelBase = ToDoListViewModel;
+                });
+
+            ViewModelBase = addItemViewModel;
         }
     }
 }

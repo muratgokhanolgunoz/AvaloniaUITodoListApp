@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:AvaloniaUITodoListApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650"
+             x:Class="AvaloniaUITodoListApp.Views.AddItemView"
+			 x:DataType="vm:AddItemViewModel">
+
+	<DockPanel Margin="15">
+		<StackPanel
+			DockPanel.Dock="Bottom"
+			Orientation="Vertical"
+			Spacing="10">
+			<Button
+				HorizontalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				FontWeight="Bold"
+				Padding="10">
+				Cancel
+			</Button>
+			<Button
+				HorizontalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				FontWeight="Bold"
+				Padding="10">
+				OK
+			</Button>
+		</StackPanel>
+		<TextBox
+			AcceptsReturn="True"
+			Text="{Binding Description}"
+			Watermark="Enter your to do item"
+			Margin="0,0,0,10"/>
+	</DockPanel>
+</UserControl>

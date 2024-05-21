@@ -9,10 +9,7 @@ namespace AvaloniaUITodoListApp.ViewModels
 
         public MainWindowViewModel()
         {
-            var service = new ToDoListService();
-            ToDoListViewModel = new ToDoListViewModel(service.GetItems());
-
-            _viewModelBase = ToDoListViewModel;
+            ToDoList();
         }
 
         public ToDoListViewModel ToDoListViewModel { get; }
@@ -26,6 +23,12 @@ namespace AvaloniaUITodoListApp.ViewModels
         public void AddItem()
         {
             ViewModelBase = new AddItemViewModel();
+        }
+
+        public void ToDoList()
+        {
+            var service = new ToDoListService();
+            ViewModelBase = new ToDoListViewModel(service.GetItems());
         }
     }
 }

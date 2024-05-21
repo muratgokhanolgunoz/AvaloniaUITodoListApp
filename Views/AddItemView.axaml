@@ -16,14 +16,18 @@
 				HorizontalAlignment="Stretch"
 				HorizontalContentAlignment="Center"
 				FontWeight="Bold"
-				Padding="10">
+				Padding="10"
+				Cursor="Hand"
+				x:CompileBindings="False"
+				Command="{Binding $parent[Window].DataContext.ToDoList}">
 				Cancel
 			</Button>
 			<Button
 				HorizontalAlignment="Stretch"
 				HorizontalContentAlignment="Center"
 				FontWeight="Bold"
-				Padding="10">
+				Padding="10"
+				Cursor="Hand">
 				OK
 			</Button>
 		</StackPanel>

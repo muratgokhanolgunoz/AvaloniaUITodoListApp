@@ -2,8 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:AvaloniaUITodoListApp.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
-             x:Class="AvaloniaUITodoListApp.Views.ToDoListView">
+             x:Class="AvaloniaUITodoListApp.Views.ToDoListView"
+			 x:DataType="vm:ToDoListViewModel">
 
 	<DockPanel Margin="15">
 		<Button DockPanel.Dock="Bottom"
@@ -14,27 +16,16 @@
 				Cursor="Hand">
 			Add New Task
 		</Button>
-		<StackPanel>
-			<CheckBox
-				Cursor="Hand"
-				Margin="4">
-				Update the project documentation
-			</CheckBox>
-			<CheckBox
-				Cursor="Hand"
-				Margin="4">
-				Implement the login feature
-			</CheckBox>
-			<CheckBox
-				Cursor="Hand"
-				Margin="4">
-				Fix bugs reported in issue tracker
-			</CheckBox>
-			<CheckBox
-				Cursor="Hand"
-				Margin="4">
-				Review pull requests
-			</CheckBox>
-		</StackPanel>
+		<ItemsControl ItemsSource="{Binding ToDoList}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<CheckBox
+						Margin="4"
+						IsChecked="{Binding IsChecked}"
+						Content="{Binding Description}"
+						Cursor="Hand"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
 	</DockPanel>
 </UserControl>

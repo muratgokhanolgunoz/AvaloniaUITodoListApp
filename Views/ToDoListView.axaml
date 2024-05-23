@@ -39,7 +39,7 @@
 							Foreground="White"
 							Background="Red"
 							Cursor="Hand"
-							Command="{Binding $parent[ItemsControl].((vm:ToDoListViewModel)DataContext).DeleteCommand}"
+							Command="{Binding $parent[ItemsControl].((vm:ToDoListViewModel)DataContext).DeleteItemCommand}"
 							CommandParameter="{Binding Id}">
 							Delete
 						</Button>

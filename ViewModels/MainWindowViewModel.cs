@@ -38,6 +38,7 @@ namespace AvaloniaUITodoListApp.ViewModels
                     if(newItem != null)
                     {
                         ToDoListViewModel.ToDoList.Add(newItem);
+                        ToDoListViewModel.CheckToDoListLength();
                     }
 
                     ViewModelBase = ToDoListViewModel;

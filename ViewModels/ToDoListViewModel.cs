@@ -14,13 +14,33 @@ namespace AvaloniaUITodoListApp.ViewModels
 {
     public class ToDoListViewModel : ViewModelBase
     {
+        private bool _noItemsFoundLabelVisibility;
         public ObservableCollection<ToDoItem> ToDoList { get; }
         public ReactiveCommand<int, Unit> DeleteItemCommand { get; }
 
         public ToDoListViewModel(IEnumerable<ToDoItem> items)
         {
             ToDoList = new ObservableCollection<ToDoItem>(items);
+            CheckToDoListLength();
+
             DeleteItemCommand = ReactiveCommand.Create<int>(DeleteItemProcess);
+        }
+
+        public bool NoItemsFoundLabelVisibility
+        {
+            get => _noItemsFoundLabelVisibility;
+            set => this.RaiseAndSetIfChanged(ref _noItemsFoundLabelVisibility, value);
+        }
+
+        public void CheckToDoListLength()
+        {
+            if (ToDoList.Count == 0)
+            {
+                NoItemsFoundLabelVisibility = true;
+                return;
+            }
+
+            NoItemsFoundLabelVisibility = false;
         }
 
         public async void DeleteItemProcess(int id)
@@ -37,6 +57,7 @@ namespace AvaloniaUITodoListApp.ViewModels
                     if (!(item is null))
                     {
                         ToDoList.Remove(item);
+                        CheckToDoListLength();
                     }
                 }
                 catch (Exception exception)

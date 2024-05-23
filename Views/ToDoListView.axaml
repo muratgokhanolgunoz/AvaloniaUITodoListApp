@@ -18,6 +18,7 @@
 				Command="{Binding $parent[Window].DataContext.AddItem}">
 			Add New Task
 		</Button>
+		
 		<ItemsControl ItemsSource="{Binding ToDoList}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
@@ -37,12 +38,15 @@
 							FontWeight="Bold"
 							Foreground="White"
 							Background="Red"
-							Cursor="Hand">
+							Cursor="Hand"
+							Command="{Binding $parent[ItemsControl].((vm:ToDoListViewModel)DataContext).DeleteCommand}"
+							CommandParameter="{Binding Id}">
 							Delete
 						</Button>
 					</Grid>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
+
 	</DockPanel>
 </UserControl>

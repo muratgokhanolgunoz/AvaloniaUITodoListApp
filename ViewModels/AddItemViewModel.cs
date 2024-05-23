@@ -12,22 +12,36 @@ namespace AvaloniaUITodoListApp.ViewModels
         public ReactiveCommand<Unit, ToDoItem> AddCommand { get; }
         public ReactiveCommand<Unit, Unit> CancelCommand { get; }
 
+        public string Description
+        {
+            get => _description;
+            set => this.RaiseAndSetIfChanged(ref _description, value);
+        }
+
         public AddItemViewModel()
         {
             var isValidObservable = this.WhenAnyValue(
                 x => x.Description,
                 x => !string.IsNullOrWhiteSpace(x));
 
-            Random random = new Random();
-
-            AddCommand = ReactiveCommand.Create(() => new ToDoItem { Id = random.Next(), Description = Description }, isValidObservable);
-            CancelCommand = ReactiveCommand.Create(() => { });
+            AddCommand = ReactiveCommand.Create(AddItemProcess, isValidObservable);
+            CancelCommand = ReactiveCommand.Create(CancelProcess);
         }
 
-        public string Description
+        public ToDoItem AddItemProcess()
         {
-            get => _description;
-            set => this.RaiseAndSetIfChanged(ref _description, value);
+            Random random = new Random();
+
+            return new ToDoItem 
+            { 
+                Id = random.Next(), 
+                Description = Description 
+            };
+        }
+
+        public void CancelProcess()
+        {
+
         }
     }
 }
